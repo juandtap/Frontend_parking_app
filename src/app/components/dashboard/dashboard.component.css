@@ -36,6 +36,7 @@
     color: #ffffff; /* Color del texto del botón */
     background-color: #007bff; /* Color azul del botón */
     border-radius: 5px;
+    font-size: 15px;
 }
 
 .menu a:hover {
