@@ -1,0 +1,20 @@
+<div >
+    <form action="" class="tarifas-form">
+        <mat-form-field>
+            <mat-label>Tipo Tarifa*</mat-label>
+            <input  matInput  [(ngModel)]="tarifa.tipoTarifa" type="text" name="tipoTarifa">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Precio por Hora*</mat-label>
+            <input matInput  [(ngModel)]="tarifa.precioHora" type="number"  name="precioHora" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Descripcion</mat-label>
+            <input matInput [(ngModel)]="tarifa.descripcion" type="text" name="descripcion" >
+          </mat-form-field>
+
+          <button mat-raised-button (click)="save()" class="custom-mat-button">Guardar</button>
+    </form>
+</div>

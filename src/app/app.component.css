@@ -1,0 +1,26 @@
+
+.main-component{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+/* .header-component{
+    
+} */
+
+.dashboard-component{
+    left: 0;
+    position: fixed;
+    top: auto;
+    height: 100%;
+    width: 15%;
+}
+
+.pages-component{
+    margin-left: 15%;
+    padding: 15px;
+   
+    
+}

@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+   
+    color: white;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+header {
+    padding: 20px;
+    background-color: #dc2626;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-right: 10px;
+   
+}
+
+.logo {
+    width: 40px; /* Ajusta el tamaño según tus necesidades */
+    height: 40px; /* Ajusta el tamaño según tus necesidades */
+}
