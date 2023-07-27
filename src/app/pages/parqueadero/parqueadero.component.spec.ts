@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ParqueaderoComponent } from './parqueadero.component';
+
+describe('ParqueaderoComponent', () => {
+  let component: ParqueaderoComponent;
+  let fixture: ComponentFixture<ParqueaderoComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ParqueaderoComponent]
+    });
+    fixture = TestBed.createComponent(ParqueaderoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

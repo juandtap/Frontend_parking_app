@@ -20,6 +20,7 @@ import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { TarifasAddComponent } from './pages/tarifas-add/tarifas-add.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ParqueaderoComponent } from './pages/parqueadero/parqueadero.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     VehiculosListComponent,
     VehiculosAddComponent,
     HomeComponent,
-    TarifasAddComponent
+    TarifasAddComponent,
+    ParqueaderoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { Router } from '@angular/router';
+import { VehiculoService } from 'src/app/services/vehiculo.service';
 
 @Component({
   selector: 'app-vehiculos-list',
@@ -6,5 +10,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./vehiculos-list.component.css']
 })
 export class VehiculosListComponent {
+
+
+  vehiculoList: any
+  displayedColumns: string[] = ['Placa', 'Marca', 'Cedula','Entrada', 'Salida'];
+
+  
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator
+  @ViewChild(MatSort) sort!: MatSort
+
+  constructor(private vehiucloService: VehiculoService, private router: Router){
+      this.vehiculoList =  this.vehiucloService.getAll()
+    
+     
+  }
+
+ 
+
+
+ 
+      
 
 }
