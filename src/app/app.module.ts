@@ -21,6 +21,12 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { TarifasAddComponent } from './pages/tarifas-add/tarifas-add.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ParqueaderoComponent } from './pages/parqueadero/parqueadero.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip'; // Importante: Asegúrate de tener esta importación
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogAnimationsExampleComponent } from './pages/dialog-animations-example/dialog-animations-example.component'; // Importante: Asegúrate de tener esta importación
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +38,8 @@ import { ParqueaderoComponent } from './pages/parqueadero/parqueadero.component'
     VehiculosAddComponent,
     HomeComponent,
     TarifasAddComponent,
-    ParqueaderoComponent
+    ParqueaderoComponent,
+    DialogAnimationsExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +54,10 @@ import { ParqueaderoComponent } from './pages/parqueadero/parqueadero.component'
     MatSortModule,
     MatPaginatorModule,
     HttpClientModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
