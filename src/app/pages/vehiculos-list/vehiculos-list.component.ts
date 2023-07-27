@@ -13,7 +13,7 @@ export class VehiculosListComponent {
 
 
   vehiculoList: any
-  displayedColumns: string[] = ['Placa', 'Marca', 'Cedula','Entrada', 'Salida'];
+  displayedColumns: string[] = ['Placa', 'Marca','Color', 'Cedula', 'Nombre'];
 
   
 
