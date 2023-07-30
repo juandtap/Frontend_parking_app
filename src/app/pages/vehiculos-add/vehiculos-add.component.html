@@ -2,32 +2,38 @@
     <form action="" class="vehiculo-form">
 <!-- Columna Placa -->
 <!-- Campo Marca -->
+
 <mat-form-field>
-    <mat-label>Marca*</mat-label>
+  <mat-label>Placa*</mat-label>
+  <input matInput [(ngModel)]="vehiculo.placa" type="text" name="placa">
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Marca</mat-label>
     <input matInput [(ngModel)]="vehiculo.marca" type="text" name="marca">
   </mat-form-field>
   
   <!-- Campo Descripcion -->
   <mat-form-field>
-    <mat-label>Descripción*</mat-label>
+    <mat-label>Descripción</mat-label>
     <input matInput [(ngModel)]="vehiculo.descripcion" type="text" name="descripcion">
   </mat-form-field>
   
   <!-- Campo Color -->
   <mat-form-field>
-    <mat-label>Color*</mat-label>
+    <mat-label>Color</mat-label>
     <input matInput [(ngModel)]="vehiculo.color" type="text" name="color">
   </mat-form-field>
   
   <!-- Campo Cedula -->
   <mat-form-field>
-    <mat-label>Cédula*</mat-label>
+    <mat-label>Cédula</mat-label>
     <input matInput [(ngModel)]="vehiculo.cedula" type="text" name="cedula">
   </mat-form-field>
   
   <!-- Campo Nombre -->
   <mat-form-field>
-    <mat-label>Nombre*</mat-label>
+    <mat-label>Nombre</mat-label>
     <input matInput [(ngModel)]="vehiculo.nombre" type="text" name="nombre">
   </mat-form-field>
   
