@@ -14,10 +14,18 @@ export class TarifaService {
 
   save(tarifa : Tarifa){
     console.log("Servicio POST")
-    console.log("tarifa: "+tarifa.tipoTarifa+ " "+tarifa.precioHora+" tipo :"+typeof(tarifa.precioHora))
+    console.log("tarifa: "+tarifa.tarifa)
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     
     return this.http.post<any>(urlbase+"nuevatarifa", JSON.stringify(tarifa), { headers })
+  }
+
+  update(tarifa : Tarifa){
+    console.log("Servicio PUT")
+    console.log("tarifa: "+tarifa.tarifa+" id:"+tarifa.id)
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<any>(urlbase+"actualizartarifa", JSON.stringify(tarifa), { headers })
+
   }
 
   getAll(){

@@ -1,6 +1,7 @@
 export class Tarifa {
     id?: number
-    tipoTarifa?: string
+    tarifa?: string
     precioHora?: number
+    fraccionHora?: number
     descripcion?: string
 }

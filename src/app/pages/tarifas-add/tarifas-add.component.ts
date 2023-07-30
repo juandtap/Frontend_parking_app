@@ -10,20 +10,43 @@ import { TarifaService } from 'src/app/services/tarifa.service';
 })
 export class TarifasAddComponent {
   tarifa: Tarifa = new Tarifa
-
+  isEditing = false
   constructor(private tarifaService : TarifaService ,private router: Router){
+      let params = this.router.getCurrentNavigation()?.extras.queryParams
+      if(params){
+        console.log("parametros recibidos: "+params)
+        this.tarifa = params['tarifaToEdit']
+        this.isEditing = params['flag']
+      }
 
+      if (this.isEditing){
+        console.log("modo edit")
+      } else{
+        console.log("modo save")
+      }
   }
+     
 
   save(){
-    console.log("agregar nueva tarifa "+this.tarifa)
+
+    if (!this.isEditing){
+        console.log("agregar nueva tarifa "+this.tarifa)
     
+        this.tarifaService.save(this.tarifa).subscribe(data =>{
+        console.log("resultado POST: ",data)
+        this.router.navigate(["pages/tarifas-list"])
+      })
+      this.tarifa = new Tarifa
+    } else{
+
+      console.log("actualizar tarifa "+this.tarifa)
+      this.tarifaService.update(this.tarifa).subscribe(data =>{
+        console.log("resultado PUT: ",data)
+        this.router.navigate(["pages/tarifas-list"])
+      })
+
+    }
+
     
-  
-    this.tarifaService.save(this.tarifa).subscribe(data =>{
-      console.log("resultado POST: ",data)
-      this.router.navigate(["pages/tarifas-list"])
-    })
-    this.tarifa = new Tarifa
   }
 }

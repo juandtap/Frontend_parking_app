@@ -27,8 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogAnimationsExampleComponent } from './pages/dialog-animations-example/dialog-animations-example.component';
 import { AcercadeComponent } from './pages/acercade/acercade.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component'; // Importante: Asegúrate de tener esta importación
-
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,8 @@ import { AyudaComponent } from './pages/ayuda/ayuda.component'; // Importante: A
     MatIconModule,
     MatTooltipModule,
     MatDialogModule,
-    
+    MatSelectModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

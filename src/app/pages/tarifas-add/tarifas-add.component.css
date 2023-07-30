@@ -1,8 +1,17 @@
 
 
-.tarifas-form  {
+.tarifas-form  form{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    
   }
 
+.tarifas-form mat-form-field{
+  width: auto;
+}
+
+.tarifas-form button{
+ background-color: #007bff;
+ color: white;
+}

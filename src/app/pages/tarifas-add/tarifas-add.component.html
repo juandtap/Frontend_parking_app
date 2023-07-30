@@ -1,8 +1,20 @@
-<div >
-    <form action="" class="tarifas-form">
+<div class="info-tarifas">
+  <mat-card>
+    <mat-card-content> 
+     <h3>Informacion tarifas</h3>
+      <p> informacion calculo fraccion hora </p>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+<br/>
+
+<div class="tarifas-form">
+    <form action="" >
         <mat-form-field>
             <mat-label>Tipo Tarifa*</mat-label>
-            <input  matInput  [(ngModel)]="tarifa.tipoTarifa" type="text" name="tipoTarifa">
+            <input  matInput  [(ngModel)]="tarifa.tarifa" type="text" name="tipoTarifa">
           </mat-form-field>
 
           <mat-form-field>
@@ -15,6 +27,23 @@
             <input matInput [(ngModel)]="tarifa.descripcion" type="text" name="descripcion" >
           </mat-form-field>
 
+          <mat-form-field>
+            <mat-label>Fraccion Hora (en minutos)</mat-label>
+            <mat-select [(ngModel)]="tarifa.fraccionHora" type="number" name="fraccionHora">
+              <mat-option [value]=1>1</mat-option>
+              <mat-option [value]=10>10</mat-option>
+              <mat-option [value]=15>15</mat-option>
+              <mat-option [value]=30>30</mat-option>
+            </mat-select>
+            <!-- <mat-hint align="end">mensaje</mat-hint> -->
+          </mat-form-field>
+          
+        <br/>
+
           <button mat-raised-button (click)="save()" class="custom-mat-button">Guardar</button>
     </form>
+
 </div>
+
+
+

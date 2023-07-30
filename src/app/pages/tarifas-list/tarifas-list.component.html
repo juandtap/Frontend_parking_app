@@ -1,5 +1,5 @@
 
-<div>
+<div class="new-tarifa">
     
     <button mat-raised-button  routerLink="/pages/tarifas-add" class="custom-button">Agregar nueva tarifa</button>
 </div>
@@ -22,15 +22,19 @@
           
           <ng-container matColumnDef="Tarifa">
             <th mat-header-cell *matHeaderCellDef > Tarifa </th>
-            <td mat-cell *matCellDef="let tarifa"> {{tarifa.tipoTarifa}} </td>
+            <td mat-cell *matCellDef="let tarifa"> {{tarifa.tarifa}} </td>
           </ng-container>
       
         
           <ng-container matColumnDef="Precio/Hora">
-            <th mat-header-cell *matHeaderCellDef > Precio/Hora </th>
-            <td mat-cell *matCellDef="let tarifa"> ${{tarifa.precioHora}} </td>
+            <th mat-header-cell *matHeaderCellDef > Precio/Hora $ </th>
+            <td mat-cell *matCellDef="let tarifa"> {{tarifa.precioHora}} </td>
           </ng-container>
-      
+
+          <ng-container matColumnDef="Fraccion Hora (minutos)">
+            <th mat-header-cell *matHeaderCellDef > Fraccion Hora (minutos) </th>
+            <td mat-cell *matCellDef="let tarifa"> {{tarifa.fraccionHora}} </td>
+          </ng-container>
         
           <ng-container matColumnDef="Descripcion">
             <th mat-header-cell *matHeaderCellDef > Descripcion </th>
@@ -42,7 +46,7 @@
             <th mat-header-cell *matHeaderCellDef> Acciones </th>
             <td mat-cell *matCellDef="let tarifa">
               <button mat-icon-button color="primary" matTooltip="Editar" (click)="editTarifa(tarifa)">
-                <mat-icon>edit</mat-icon>
+                <mat-icon id="edit-icon">edit</mat-icon>
               </button>
               <button mat-icon-button color="warn" matTooltip="Eliminar" >
                 <mat-icon>delete</mat-icon>
