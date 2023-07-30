@@ -31,4 +31,11 @@ export class TarifaService {
   getAll(){
     return this.http.get<Tarifa[]>(urlbase+"tarifas")
   }
+
+  delete(tarifa:Tarifa){
+    console.log("Servicio DELETE")
+    console.log("tarifa: "+tarifa.tarifa+" id:"+tarifa.id)
+    return this.http.delete<any>(urlbase+"eliminartarifa/"+tarifa.id)
+
+  }
 }

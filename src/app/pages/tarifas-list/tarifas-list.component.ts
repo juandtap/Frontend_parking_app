@@ -15,7 +15,7 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
   templateUrl: './tarifas-list.component.html',
   styleUrls: ['./tarifas-list.component.css'],
 })
-export class TarifasListComponent {
+export class TarifasListComponent  implements OnInit{
   tarifaList: any;
   displayedColumns: string[] = [
     'id',
@@ -66,9 +66,18 @@ export class TarifasListComponent {
     this.router.navigate(['pages/tarifas-add'], params);
   }
 
-  deleteTarifa(tarifa: any) {
+  deleteTarifa(tarifa: Tarifa) {
     // Aquí puedes implementar la lógica para eliminar la tarifa con el ID de la tarifa proporcionada
     console.log('Eliminar tarifa con ID:', tarifa.id);
+    this.tarifaService.delete(tarifa).subscribe(
+      ()=>{
+     this.ngOnInit()
+      }
+    )
+  }
+
+  ngOnInit(): void {
+    this.tarifaList = this.tarifaService.getAll();
   }
 }
 
