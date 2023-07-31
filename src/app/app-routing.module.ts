@@ -7,6 +7,7 @@ import { VehiculosListComponent } from './pages/vehiculos-list/vehiculos-list.co
 import { VehiculosAddComponent } from './pages/vehiculos-add/vehiculos-add.component';
 import { AcercadeComponent } from './pages/acercade/acercade.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component';
+import { FacturasAddComponent } from './pages/facturas-add/facturas-add.component';
 
 const routes: Routes = [
   {path: "pages/tarifas-list", component: TarifasListComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "pages/acercade", component: AcercadeComponent},
   {path: "pages/ayuda", component: AyudaComponent},
   {path: "pages/parqueadero", component: ParqueaderoComponent},
+  {path: "pages/factura-add", component: FacturasAddComponent},
 ];
 
 @NgModule({

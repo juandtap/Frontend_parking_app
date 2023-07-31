@@ -29,6 +29,8 @@ import { AcercadeComponent } from './pages/acercade/acercade.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component'; // Importante: Asegúrate de tener esta importación
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import { FacturasAddComponent } from './pages/facturas-add/facturas-add.component';
+import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import {MatCardModule} from '@angular/material/card';
     ParqueaderoComponent,
     DialogAnimationsExampleComponent,
     AcercadeComponent,
-    AyudaComponent
+    AyudaComponent,
+    FacturasAddComponent,
+    FacturasListComponent
   ],
   imports: [
     BrowserModule,

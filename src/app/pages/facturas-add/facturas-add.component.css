@@ -1,0 +1,10 @@
+.vehiculo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vehiculo-form button{
+  background-color: #007bff;
+  color: white;
+}

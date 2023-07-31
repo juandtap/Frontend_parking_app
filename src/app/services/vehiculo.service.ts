@@ -19,4 +19,11 @@ export class VehiculoService {
   getAll(){
     return this.http.get<Vehiculo[]>(urlbase+"vehiculos")
   }
+
+
+  update(vehiculo : Vehiculo){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<any>(urlbase+"actualizarvehiculo", JSON.stringify(vehiculo), { headers })
+
+  }
 }

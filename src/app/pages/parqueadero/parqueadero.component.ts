@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { Vehiculo } from 'src/app/model/vehiculo';
 import { TicketService } from 'src/app/services/ticket.service';
 
 @Component({
@@ -23,4 +24,19 @@ export class ParqueaderoComponent{
     
 
 }
+
+editVehiculo(vehiculo: Vehiculo) {
+
+  //const tarifaJson = JSON.stringify(tarifa);
+  let params: NavigationExtras = {
+    queryParams: {
+      vehiculoToEdit: vehiculo,
+    },
+  };
+  this.router.navigate(['pages/factura-add'], params);
+
+}
+
+
+
 }
