@@ -10,16 +10,16 @@
 
 <br/>
 
-<div class="tarifas-form">
-    <form action="" >
+<div class="tarifas-form" >
+    <form action="" #tarifaForm="ngForm" (ngSubmit)="checkDataForm()">
         <mat-form-field>
-            <mat-label>Tipo Tarifa*</mat-label>
-            <input  matInput  [(ngModel)]="tarifa.tarifa" type="text" name="tipoTarifa">
+            <mat-label>Tipo Tarifa</mat-label>
+            <input  matInput  [(ngModel)]="tarifa.tarifa" type="text" name="tarifa" required>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Precio por Hora*</mat-label>
-            <input matInput  [(ngModel)]="tarifa.precioHora" type="number"  name="precioHora" >
+            <mat-label>Precio por Hora</mat-label>
+            <input matInput  [(ngModel)]="tarifa.precioHora" type="number"  name="precioHora" required>
           </mat-form-field>
 
           <mat-form-field>
@@ -29,7 +29,7 @@
 
           <mat-form-field>
             <mat-label>Fraccion Hora (en minutos)</mat-label>
-            <mat-select [(ngModel)]="tarifa.fraccionHora" type="number" name="fraccionHora">
+            <mat-select [(ngModel)]="tarifa.fraccionHora" type="number" name="fraccionHora" required>
               <mat-option [value]=1>1</mat-option>
               <mat-option [value]=10>10</mat-option>
               <mat-option [value]=15>15</mat-option>
@@ -40,7 +40,7 @@
           
         <br/>
 
-          <button mat-raised-button (click)="save()" class="custom-mat-button">Guardar</button>
+          <button mat-raised-button type="submit" class="custom-mat-button">Guardar</button>
     </form>
 
 </div>

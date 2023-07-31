@@ -1,10 +1,10 @@
 export class Vehiculo {
-    placa?: string
-    marca?: number
-    descripcion?: string
+    placa: string = ""
+    marca: string = ""
+    descripcion: string =""
     color?:string
-    cedula?:string
-    nombre?:string
+    cedula:string =""
+    nombre:string =""
 
 
 }

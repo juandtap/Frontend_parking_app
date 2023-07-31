@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Ticket } from 'src/app/model/ticket';
 import { Vehiculo } from 'src/app/model/vehiculo';
+import { TicketService } from 'src/app/services/ticket.service';
 import { VehiculoService } from 'src/app/services/vehiculo.service';
+
 
 @Component({
   selector: 'app-vehiculos-add',
@@ -12,9 +15,12 @@ export class VehiculosAddComponent {
 
 
   vehiculo: Vehiculo = new Vehiculo
-  isEditing = false
+  ticket: Ticket = new Ticket
 
-  constructor(private vehiculoService : VehiculoService,private router: Router){
+  isEditing = false
+ 
+  
+  constructor(private vehiculoService : VehiculoService, private ticketService: TicketService, private router: Router){
     let params = this.router.getCurrentNavigation()?.extras.queryParams
     if(params){
       console.log("parametros recibidos: "+params)
@@ -30,12 +36,44 @@ export class VehiculosAddComponent {
 
   }
 
+  formatPlaca() {
+    // Expresión regular para validar el formato deseado (tres letras mayúsculas seguidas de un guion y cuatro dígitos)
+    const placaRegex = /^[A-Z]{3}-\d{4}$/;
+
+    // Verificar si el valor actual cumple con el formato deseado
+    if (this.vehiculo.placa && placaRegex.test(this.vehiculo.placa.toUpperCase())) {
+      // Si el valor cumple con el formato, lo dejamos como está
+      return;
+    }
+
+    // Si el valor no cumple con el formato, lo formateamos
+    const placaFormatted = this.vehiculo.placa.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (placaFormatted.length > 3) {
+      // Insertamos un guion después de las primeras tres letras mayúsculas
+      const letters = placaFormatted.substring(0, 3);
+      const numbers = placaFormatted.substring(3, 7); // Limitamos a 4 dígitos
+      this.vehiculo.placa = `${letters}-${numbers}`;
+    } else {
+      // Si no hay al menos tres letras, solo formateamos en mayúsculas
+      this.vehiculo.placa = placaFormatted;
+    }
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    // Limitar el numero de caracteres a 8 (3 letras + 1 guion + 4 dígitos)
+    if (this.vehiculo.placa.length >= 8 && event.key !== 'Backspace' && event.key !== 'Tab') {
+      event.preventDefault();
+    }
+    
+  }
+
   save(){
     
-    console.log("agregar nueva tarifa "+this.vehiculo)
-    this.vehiculoService.save(this.vehiculo).subscribe(data =>{
+    console.log("agregar nuevo vehiculo "+this.vehiculo.placa)
+    this.ticket.vehiculo = this.vehiculo
+    this.ticketService.save(this.ticket).subscribe(data =>{
     console.log("resultado POST: ",data)
-    this.router.navigate(["pages/listaVehiculos"])
+    this.router.navigate(["pages/parqueadero"])
     })
     this.vehiculo = new Vehiculo
   }
