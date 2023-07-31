@@ -8,3 +8,72 @@
   background-color: #007bff;
   color: white;
 }
+/* Estilos para el contenedor principal */
+.container {
+  display: flex; /* Utiliza flexbox para colocar los elementos en fila */
+}
+
+/* Estilos para la columna izquierda */
+.column-left {
+  flex: 1; /* Ocupa la mitad del espacio disponible en la fila */
+  padding-right: 20px; /* Espacio entre la columna izquierda y la derecha */
+}
+
+/* Estilos para el formulario de Datos del Vehículo */
+.vehiculo-form {
+  /* Ajusta los márgenes del formulario */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Estilos para la columna derecha */
+.column-right {
+  flex: 1; /* Ocupa la mitad del espacio disponible en la fila */
+  padding-left: 20px; /* Espacio entre la columna derecha y la izquierda */
+}
+
+/* Estilos para la tabla de Lista de tarifas */
+.mat-elevation-z8 {
+  /* Ajusta los márgenes de la tabla */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Estilos adicionales para el botón Agregar nueva tarifa */
+.custom-button {
+  margin-top: 20px; /* Ajusta el espacio entre el botón y la parte superior */
+}
+/* Estilo para las celdas de checkbox seleccionadas */
+.mat-row.mat-selected {
+  background-color: rgba(0, 0, 0, 0.1); /* Cambia el color de fondo de las filas seleccionadas */
+}
+.column-right {
+  width: 200px; /* Ancho del div */
+  height: 300px; /* Alto del div */
+  padding: 10px; /* Espacio interno del div */
+  margin: 5px; /* Espacio externo del div */
+  font-size: 14px; /* Tamaño de la fuente dentro del div */
+}
+
+h2 {
+  font-size: 20px; /* Cambia el tamaño de la fuente del título */
+  margin-bottom: 10px; /* Ajusta el margen inferior del título */
+}
+
+.mat-elevation-z8 {
+  max-height: 300px; /* Ajusta la altura máxima de la tabla */
+  overflow-y: auto; /* Añade scroll vertical si el contenido excede la altura máxima */
+}
+
+table {
+  width: 100%; /* Ajusta el ancho de la tabla para que ocupe todo el espacio disponible */
+}
+
+td, th {
+  padding: 8px; /* Ajusta el padding de las celdas */
+  font-size: 14px; /* Cambia el tamaño de la fuente de las celdas */
+}
+
+.mat-row:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo de la fila al pasar el cursor sobre ella */
+}

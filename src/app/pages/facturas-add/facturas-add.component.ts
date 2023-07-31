@@ -2,7 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Vehiculo } from 'src/app/model/vehiculo';
+import { TarifaService } from 'src/app/services/tarifa.service';
 import { VehiculoService } from 'src/app/services/vehiculo.service';
+import { KeyValuePipe } from '@angular/common';
 
 
 @Component({
@@ -13,10 +15,20 @@ import { VehiculoService } from 'src/app/services/vehiculo.service';
 export class FacturasAddComponent {
   vehiculo: Vehiculo = new Vehiculo();
   isEditing = true;
+  tarifaList: any;
+  displayedColumns: string[] = [
+    'id',
+    'Tarifa',
+    'Precio/Hora',
+  ];
 
   @ViewChild('vehiculoForm') vehiculoForm!: NgForm;
 
-  constructor(private vehiculoService: VehiculoService, private router: Router) {
+  constructor(private vehiculoService: VehiculoService, private router: Router ,    private tarifaService: TarifaService,) {
+
+    this.tarifaList = this.tarifaService.getAll();
+    
+
     let params = this.router.getCurrentNavigation()?.extras.queryParams;
     if (params) {
       console.log('parametros recibidos: ' + params);
