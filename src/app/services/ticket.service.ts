@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Ticket } from '../model/ticket';
 
 const urlbase = "http://localhost:8080/parking_app/webservice/parking/"
