@@ -15,3 +15,21 @@
  background-color: #007bff;
  color: white;
 }
+
+
+/* Estilo personalizado para el botón */
+.custom-mat-button {
+  background-color: #4CAF50; /* Color de fondo (verde) */
+  color: white; /* Color del texto (blanco) */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: bold; /* Peso de la fuente en negrita */
+  padding: 12px 24px; /* Espaciado interno (arriba/abajo, izquierda/derecha) */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar por encima del botón */
+  border-radius: 4px; /* Borde redondeado */
+}
+
+/* Estilo cuando se pasa el cursor por encima del botón */
+.custom-mat-button:hover {
+  background-color: #45a049; /* Color de fondo más oscuro cuando se pasa el cursor */
+}

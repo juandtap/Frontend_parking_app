@@ -31,6 +31,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { FacturasAddComponent } from './pages/facturas-add/facturas-add.component';
 import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
+import { SnackbarComponent } from './pages/snackbar/snackbar.component';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -49,6 +51,7 @@ import { FacturasListComponent } from './pages/facturas-list/facturas-list.compo
     AyudaComponent,
     FacturasAddComponent,
     FacturasListComponent,
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,9 @@ import { FacturasListComponent } from './pages/facturas-list/facturas-list.compo
     MatDialogModule,
     MatSelectModule,
     MatCardModule,
+    MatSnackBarModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
