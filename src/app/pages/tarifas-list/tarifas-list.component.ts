@@ -9,6 +9,7 @@ import { async } from 'rxjs';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { DialogAnimationsExampleComponent } from '../dialog-animations-example/dialog-animations-example.component';
 
 @Component({
   selector: 'app-tarifas-list',
@@ -35,7 +36,7 @@ export class TarifasListComponent  implements OnInit{
     private router: Router,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    public dialog: MatDialog
+    public dialogo: MatDialog
   ) {
 
     this.tarifaService.getAll().subscribe(
@@ -72,14 +73,28 @@ export class TarifasListComponent  implements OnInit{
   }
 
   deleteTarifa(tarifa: Tarifa) {
-    // Aquí puedes implementar la lógica para eliminar la tarifa con el ID de la tarifa proporcionada
-    console.log('Eliminar tarifa con ID:', tarifa.id);
-    this.tarifaService.delete(tarifa).subscribe(
-      ()=>{
-     this.ngOnInit()
-      }
-    )
+
+    this.dialogo.open(DialogAnimationsExampleComponent, {
+      data: `Seguro que desea eliminar ? Esta accion no puede deshacerse`
+    })
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (confirmado) {
+          console.log('Eliminar tarifa con ID:', tarifa.id);
+          this.tarifaService.delete(tarifa).subscribe(
+            () => {
+              this.ngOnInit()
+            }
+          )
+
+
+        } else {
+     
+        }
+      });
+
   }
+
 
   ngOnInit(): void {
     this.tarifaService.getAll().subscribe(
@@ -88,6 +103,8 @@ export class TarifasListComponent  implements OnInit{
       }
     )
   }
+
 }
+
 
 // ejemplo completo en : https://material.angular.io/components/table/examples#table-overview
