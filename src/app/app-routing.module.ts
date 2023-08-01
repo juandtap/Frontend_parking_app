@@ -9,7 +9,7 @@ import { AcercadeComponent } from './pages/acercade/acercade.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component';
 import { FacturasAddComponent } from './pages/facturas-add/facturas-add.component';
 import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
-import { TicketsAddComponent } from './pages/tickets-add/tickets-add.component';
+
 
 const routes: Routes = [
   {path: "pages/tarifas-list", component: TarifasListComponent},
