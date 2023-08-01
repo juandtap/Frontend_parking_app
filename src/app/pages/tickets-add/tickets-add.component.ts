@@ -1,23 +1,22 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Vehiculo } from 'src/app/model/vehiculo';
 import { TarifaService } from 'src/app/services/tarifa.service';
+import { VehiculoService } from 'src/app/services/vehiculo.service';
+import { KeyValuePipe } from '@angular/common';
 import { Factura } from 'src/app/model/factura';
 import { Tarifa } from 'src/app/model/tarifa';
-import { Vehiculo } from 'src/app/model/vehiculo';
-import { VehiculoService } from 'src/app/services/vehiculo.service';
 
 @Component({
-  selector: 'app-facturas-add',
-  templateUrl: './facturas-add.component.html',
-  styleUrls: ['./facturas-add.component.css'],
+  selector: 'app-tickets-add',
+  templateUrl: './tickets-add.component.html',
+  styleUrls: ['./tickets-add.component.css']
 })
-export class FacturasAddComponent {
- 
-  factura : Factura = new Factura()
-  vehiculo: Vehiculo = new Vehiculo()
-  isEditing = true
-  tarifaList: Tarifa[] = []
+export class TicketsAddComponent {
+  vehiculo: Vehiculo = new Vehiculo();
+  isEditing = true;
+  tarifaList: Tarifa[] = [];
  
   displayedColumns: string[] = ['id', 'Tarifa', 'Precio/Hora'];
 
@@ -104,4 +103,5 @@ export class FacturasAddComponent {
       event.preventDefault();
     }
   }
+
 }

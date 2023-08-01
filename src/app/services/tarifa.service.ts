@@ -28,7 +28,7 @@ export class TarifaService {
 
   }
 
-  getAll(){
+  getAll():  Observable<Tarifa[]>{
     return this.http.get<Tarifa[]>(urlbase+"tarifas")
   }
 

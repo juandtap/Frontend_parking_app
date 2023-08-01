@@ -14,7 +14,7 @@ export class ParqueaderoComponent{
  
   ticketList: any;
 
-  displayedColumns: string[] = ['Placa', 'Entrada','Salida'];
+  displayedColumns: string[] = ['Placa', 'Marca', 'Entrada','Salida'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
@@ -25,7 +25,7 @@ export class ParqueaderoComponent{
 
 }
 
-editVehiculo(vehiculo: Vehiculo) {
+goToFacture(vehiculo: Vehiculo) {
 
   //const tarifaJson = JSON.stringify(tarifa);
   let params: NavigationExtras = {
@@ -33,7 +33,7 @@ editVehiculo(vehiculo: Vehiculo) {
       vehiculoToEdit: vehiculo,
     },
   };
-  this.router.navigate(['pages/factura-add'], params);
+  this.router.navigate(['pages/facturas-add'], params);
 
 }
 

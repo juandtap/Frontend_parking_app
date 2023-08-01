@@ -17,19 +17,34 @@
 .column-left {
   flex: 1; /* Ocupa la mitad del espacio disponible en la fila */
   padding-right: 20px; /* Espacio entre la columna izquierda y la derecha */
+ 
+}
+.column-left mat-form-field{
+  width: 100%;
+ 
+}
+
+.column-left mat-card{
+  padding: 10px;
+ 
 }
 
 /* Estilos para el formulario de Datos del Vehículo */
 .vehiculo-form {
   /* Ajusta los márgenes del formulario */
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
 }
 
 /* Estilos para la columna derecha */
 .column-right {
   flex: 1; /* Ocupa la mitad del espacio disponible en la fila */
   padding-left: 20px; /* Espacio entre la columna derecha y la izquierda */
+  width: 50%;
+}
+
+.column-right mat-card{
+  padding: 5px;
 }
 
 /* Estilos para la tabla de Lista de tarifas */

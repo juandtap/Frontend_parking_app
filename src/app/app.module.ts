@@ -31,6 +31,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { FacturasAddComponent } from './pages/facturas-add/facturas-add.component';
 import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
+import { TicketsAddComponent } from './pages/tickets-add/tickets-add.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FacturasListComponent } from './pages/facturas-list/facturas-list.compo
     AcercadeComponent,
     AyudaComponent,
     FacturasAddComponent,
-    FacturasListComponent
+    FacturasListComponent,
+    TicketsAddComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./tarifas-list.component.css'],
 })
 export class TarifasListComponent  implements OnInit{
-  tarifaList: any;
+  tarifaList: Tarifa[] = []
   displayedColumns: string[] = [
     'id',
     'Tarifa',
@@ -37,7 +37,12 @@ export class TarifasListComponent  implements OnInit{
     private domSanitizer: DomSanitizer,
     public dialog: MatDialog
   ) {
-    this.tarifaList = this.tarifaService.getAll();
+
+    this.tarifaService.getAll().subscribe(
+      (data: Tarifa[]) =>{
+        this.tarifaList = data
+      }
+    )
 
     // Importa los iconos "edit" y "delete" desde los recursos de Material Icons
     this.matIconRegistry.addSvgIcon(
@@ -77,7 +82,11 @@ export class TarifasListComponent  implements OnInit{
   }
 
   ngOnInit(): void {
-    this.tarifaList = this.tarifaService.getAll();
+    this.tarifaService.getAll().subscribe(
+      (data: Tarifa[]) =>{
+        this.tarifaList = data
+      }
+    )
   }
 }
 

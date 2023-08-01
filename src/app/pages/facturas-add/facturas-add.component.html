@@ -1,58 +1,60 @@
 <div class="container">
   <!-- Columna izquierda con el formulario de Datos del Vehículo -->
   <div class="column-left">
-    <form action="" class="vehiculo-form">
-      <!-- Campos del formulario -->
-      <h2>Datos Facturación</h2>
-      <h3>Datos del Vehículo</h3>
-      <mat-form-field>
-        <mat-label>Placa</mat-label>
-        <input matInput [(ngModel)]="vehiculo.placa" type="text" name="placa" (input)="formatPlaca()" (keydown)="onKeyDown($event)" required>
-      </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Marca</mat-label>
-        <input matInput [(ngModel)]="vehiculo.marca" type="text" name="marca">
-      </mat-form-field>
+    <mat-card>
+      <form action="" class="vehiculo-form">
+        <!-- Campos del formulario -->
+        <h2>Datos Facturación</h2>
+        <h3>Datos del Vehículo</h3>
+        <mat-form-field>
+          <mat-label>Placa</mat-label>
+          <input matInput [(ngModel)]="vehiculo.placa" type="text" name="placa" (input)="formatPlaca()" (keydown)="onKeyDown($event)" required>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Marca</mat-label>
+          <input matInput [(ngModel)]="vehiculo.marca" type="text" name="marca">
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Cédula</mat-label>
+          <input matInput [(ngModel)]="vehiculo.cedula" type="text" name="cedula">
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput [(ngModel)]="vehiculo.nombre" type="text" name="nombre">
+        </mat-form-field>
+      </form>
+    </mat-card>
 
-      <mat-form-field>
-        <mat-label>Cédula</mat-label>
-        <input matInput [(ngModel)]="vehiculo.cedula" type="text" name="cedula">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input matInput [(ngModel)]="vehiculo.nombre" type="text" name="nombre">
-      </mat-form-field>
-    </form>
+    
   </div>
 
   <!-- Columna derecha con la Lista de tarifas -->
+
   <div class="column-right">
-    <h2>Lista de tarifas</h2>
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="tarifaList" matSort>
-        <!-- Definir columnas de la tabla -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let tarifa">{{ tarifa.id }}</td>
-        </ng-container>
 
-        <ng-container matColumnDef="Tarifa">
-          <th mat-header-cell *matHeaderCellDef>Tarifa</th>
-          <td mat-cell *matCellDef="let tarifa">{{ tarifa.tarifa }}</td>
-        </ng-container>
+    <mat-card>
+      <h2>Seleccionar Tarifa</h2>
+      <mat-form-field>
+        <mat-select [(ngModel)]="tarifaSeleccionada" *ngIf="tarifaList.length > 0" name="tarifa" required>
+          <mat-option *ngFor="let option of tarifaList" [value]="option">
+              {{option.tarifa}} - $ {{option.precioHora}} /hora
+          </mat-option>
+      </mat-select>
+      <span *ngIf="tarifaList.length === 0">No hay opciones disponibles</span>
+      </mat-form-field>
+        <h2>Tarifa seleccionada: </h2>
+        <p> {{tarifaSeleccionada.tarifa}}  </p>
+        <p> precio: $ {{tarifaSeleccionada.precioHora}}/hora</p>
+        <p> fraccion hora: {{tarifaSeleccionada.fraccionHora}} min</p>
+    </mat-card>
 
-        <ng-container matColumnDef="Precio/Hora">
-          <th mat-header-cell *matHeaderCellDef>Precio/Hora $</th>
-          <td mat-cell *matCellDef="let tarifa">{{ tarifa.precioHora }}</td>
-        </ng-container>
-
-        <!-- Asignar columnas a las filas de la tabla -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let tarifa; columns: displayedColumns;"></tr>
-      </table>
-    </div>
+  
+  
+   
   </div>
 </div>
 

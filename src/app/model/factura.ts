@@ -6,7 +6,7 @@ export class Factura {
     numero: string = ""
     fecha:any
     total?:number
-    ticket!:Ticket
-    tarifa!:Tarifa
+    ticket?:Ticket
+    tarifa:Tarifa = new Tarifa
 
 }
