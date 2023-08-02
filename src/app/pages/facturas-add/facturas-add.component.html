@@ -6,7 +6,7 @@
       <form action="" class="vehiculo-form">
         <!-- Campos del formulario -->
         <h2>Datos Facturación</h2>
-        <h3>Datos del Vehículo</h3>
+        <h3>Datos del Vehículo:</h3>
         <mat-form-field>
           <mat-label>Placa</mat-label>
           <input matInput [(ngModel)]="ticket.vehiculo.placa" type="text" name="placa" (input)="formatPlaca()" (keydown)="onKeyDown($event)" required>
@@ -17,7 +17,7 @@
           <input matInput [(ngModel)]="ticket.vehiculo.marca" type="text" name="marca">
         </mat-form-field>
         
-        <h3>Datos del Cliente</h3>
+        <h3>Datos del Cliente:</h3>
         <p>Si los datos se dejan en blanco, en la factura aparecera como consumidor final </p>
 
         <mat-form-field>
@@ -30,12 +30,12 @@
           <input matInput [(ngModel)]="ticket.vehiculo.nombre" type="text" name="nombre">
         </mat-form-field>
 
-        <button mat-raised-button type="submit" class="custom-mat-button">Guardar</button>
+       
       </form>
     </mat-card>
     
       <br/>
-   
+      <button mat-raised-button type="submit" class="custom-mat-button" (click)="save()">Guardar</button>
      
   </div>
 
@@ -60,15 +60,18 @@
     </mat-card>
     <br/>
     <mat-card>
-      <h2>Tiempo parqueo</h2>
+      <h2>Tiempo parqueo:</h2>
       {{ convertirAMinutosYHoras(ticket.tiempoParqueo) }}
     </mat-card>
-    
+    <br/>
     <mat-card>
-      <h2>Total a pagar</h2>
-      
+      <h2>Total a pagar:</h2>
+      <h2> $ {{ calcularPrecioParqueo(ticket.tiempoParqueo, tarifaSeleccionada.precioHora, tarifaSeleccionada.fraccionHora) }}</h2>
+      <mat-form-field>
+        <input matInput [(ngModel)]="totalFactura" type="number" name="precioTotal" step="0.01" >
+      </mat-form-field>
     </mat-card>
-  
+    
   
    
   </div>

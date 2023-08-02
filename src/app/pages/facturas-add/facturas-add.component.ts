@@ -9,46 +9,53 @@ import { VehiculoService } from 'src/app/services/vehiculo.service';
 import { Ticket } from 'src/app/model/ticket';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { TicketService } from 'src/app/services/ticket.service';
+import { FacturaService } from 'src/app/services/factura.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.component';
 @Component({
   selector: 'app-facturas-add',
   templateUrl: './facturas-add.component.html',
   styleUrls: ['./facturas-add.component.css'],
 })
 export class FacturasAddComponent {
- 
-  factura : Factura = new Factura()
-  ticket: Ticket = new Ticket()
-  tarifaList: Tarifa[] = []
- 
+  factura: Factura = new Factura();
+  ticket: Ticket = new Ticket();
+  tarifaList: Tarifa[] = [];
 
-  tarifaSeleccionada : Tarifa = new Tarifa()
+  totalFactura: number = 0;
+
+  actualizacionVehiculo = false;
+
+  tarifaSeleccionada: Tarifa = new Tarifa();
   @ViewChild('vehiculoForm') vehiculoForm!: NgForm;
 
   constructor(
     private router: Router,
-    private tarifaService: TarifaService
+    private tarifaService: TarifaService,
+    private ticketService: TicketService,
+    private facturaService: FacturaService,
+    private _snackBar: MatSnackBar
   ) {
-    this.tarifaService.getAll().subscribe(
-      (data : Tarifa[])=>{
-        this.tarifaList = data
-        // la primera tarifa recueperada es la que se muestra por defecto en el mat-select
-        this.tarifaSeleccionada = this.tarifaList[0]
-      }
-      
-    )
-
-   
+    this.tarifaService.getAll().subscribe((data: Tarifa[]) => {
+      this.tarifaList = data;
+      // la primera tarifa recuperada es la que se muestra por defecto en el mat-select
+      this.tarifaSeleccionada = this.tarifaList[0];
+    });
 
     let params = this.router.getCurrentNavigation()?.extras.queryParams;
     if (params) {
       console.log('parametros recibidos: ' + params);
-     
-      this.ticket = params['ticketToEdit'];
-      
-      console.log("tiempo de parqueo del ticket "+this.ticket.id+" : "+this.ticket.tiempoParqueo)
-    }
 
-  
+      this.ticket = params['ticketToEdit'];
+
+      console.log(
+        'tiempo de parqueo del ticket ' +
+          this.ticket.id +
+          ' : ' +
+          this.ticket.tiempoParqueo
+      );
+    }
   }
 
   checkDataForm() {
@@ -60,7 +67,31 @@ export class FacturasAddComponent {
   }
 
   save() {
-  
+    // guardar factura con su ticket y tarifa seleccionada
+    if (this.actualizacionVehiculo) {
+      // servicio update del ticlet + save de factura
+    } else {
+      // servicio save de factura
+      console.log("servicio post factura")
+      this.factura.tarifa = this.tarifaSeleccionada
+      this.factura.ticket = this.ticket
+      this.factura.total = this.totalFactura
+
+      this.facturaService.save(this.factura).subscribe(
+        () =>{
+          console.log("factura guardada")
+          this.openSnackBar("Salida vehiculo registrada!")
+          this.router.navigate(["pages/parqueadero"])
+        }
+      )
+    }
+  }
+
+  openSnackBar(mensaje: string) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: 4 * 1000,
+      data : mensaje
+    });
   }
 
   formatPlaca() {
@@ -88,24 +119,37 @@ export class FacturasAddComponent {
     }
   }
   // el servidor devuelve el tiempo de parqueo en minutos, esta funcion devuelve un string
-  // que muestra ese tiempo en en hora y minutos 
+  // que muestra ese tiempo en en hora y minutos
   convertirAMinutosYHoras(minutos: number): string {
     const horas = Math.floor(minutos / 60);
     const minutosRestantes = minutos % 60;
 
     if (horas > 0) {
-      return `${horas} hora${horas > 1 ? 's' : ''} con ${minutosRestantes} minuto${minutosRestantes > 1 ? 's' : ''}`;
+      return `${horas} hora${
+        horas > 1 ? 's' : ''
+      } con ${minutosRestantes} minuto${minutosRestantes > 1 ? 's' : ''}`;
     } else {
       return `${minutos} minuto${minutos > 1 ? 's' : ''}`;
     }
   }
 
-  calcularPrecioParqueo(tiempoenminutos: number, precioHora: number, fraccionHora: number): number {
+  calcularPrecioParqueo(
+    tiempoenminutos: number,
+    precioHora: number,
+    fraccionHora: number
+  ): number {
+    if (tiempoenminutos < fraccionHora) {
+      tiempoenminutos = fraccionHora;
+    }
+
     const horasCompletas = Math.floor(tiempoenminutos / 60);
     const minutosRestantes = tiempoenminutos % 60;
 
+    if (tiempoenminutos < fraccionHora) {
+    }
+
     let precioTotal = 0;
-    
+
     // Cálculo de las horas completas
     if (horasCompletas > 0) {
       precioTotal += horasCompletas * precioHora;
@@ -113,10 +157,10 @@ export class FacturasAddComponent {
 
     // Cálculo de los minutos restantes
     if (minutosRestantes > 0) {
-      precioTotal += precioHora * (minutosRestantes <= fraccionHora ? 1 : Math.ceil(minutosRestantes / fraccionHora));
+      const fracciones = Math.floor(minutosRestantes / fraccionHora);
+      precioTotal += fracciones * (precioHora * (fraccionHora / 60));
     }
-
-    return precioTotal;
+    this.totalFactura = parseFloat(precioTotal.toFixed(2));
+    return parseFloat(precioTotal.toFixed(2));
   }
-  
 }
