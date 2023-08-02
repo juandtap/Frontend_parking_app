@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Ticket } from 'src/app/model/ticket';
 import { Vehiculo } from 'src/app/model/vehiculo';
 import { TicketService } from 'src/app/services/ticket.service';
 import { VehiculoService } from 'src/app/services/vehiculo.service';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 
 @Component({
@@ -18,9 +20,9 @@ export class VehiculosAddComponent {
   ticket: Ticket = new Ticket
 
   isEditing = false
- 
+  durationInSeconds = 5;
   
-  constructor(private vehiculoService : VehiculoService, private ticketService: TicketService, private router: Router){
+  constructor(private vehiculoService : VehiculoService, private ticketService: TicketService, private router: Router , private _snackBar: MatSnackBar){
     let params = this.router.getCurrentNavigation()?.extras.queryParams
     if(params){
       console.log("parametros recibidos: "+params)
@@ -76,6 +78,13 @@ export class VehiculosAddComponent {
     this.router.navigate(["pages/parqueadero"])
     })
     this.vehiculo = new Vehiculo
+  }
+
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
   }
 }
 

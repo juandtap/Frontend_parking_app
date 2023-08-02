@@ -1,8 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tarifa } from 'src/app/model/tarifa';
 import { TarifaService } from 'src/app/services/tarifa.service';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
   selector: 'app-tarifas-add',
@@ -12,10 +14,12 @@ import { NgForm } from '@angular/forms';
 export class TarifasAddComponent {
   tarifa: Tarifa = new Tarifa();
   isEditing = false;
+  durationInSeconds = 5;
 
   @ViewChild('tarifaForm') tarifaForm!: NgForm;
+  @ViewChild('tarifaInput') tarifaInput!: ElementRef;
 
-  constructor(private tarifaService: TarifaService, private router: Router) {
+  constructor(private tarifaService: TarifaService, private router: Router , private _snackBar: MatSnackBar) {
     let params = this.router.getCurrentNavigation()?.extras.queryParams;
     if (params) {
       console.log('parametros recibidos: ' + params);
@@ -55,5 +59,16 @@ export class TarifasAddComponent {
         this.router.navigate(['pages/tarifas-list']);
       });
     }
+  }
+
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+
+  convertirAMayusculas() {
+    this.tarifa.tarifa = this.tarifa.tarifa.toUpperCase();
   }
 }

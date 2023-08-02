@@ -13,8 +13,9 @@
 <div class="tarifas-form" >
     <form action="" #tarifaForm="ngForm" (ngSubmit)="checkDataForm()">
         <mat-form-field>
-            <mat-label>Tipo Tarifa</mat-label>
-            <input  matInput  [(ngModel)]="tarifa.tarifa" type="text" name="tarifa" required>
+          
+            <mat-label>Tarifa</mat-label>
+            <input  matInput  [(ngModel)]="tarifa.tarifa" type="text" name="tarifa" (input)="convertirAMayusculas()"  required>
           </mat-form-field>
 
           <mat-form-field>
@@ -40,7 +41,9 @@
           
         <br/>
 
-          <button mat-raised-button type="submit" class="custom-mat-button">Guardar</button>
+          <button mat-raised-button type="submit" class="custom-mat-button"  (click)="openSnackBar()">Guardar</button>
+          
+
     </form>
 
 </div>

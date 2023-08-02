@@ -39,6 +39,6 @@
       <input matInput [(ngModel)]="vehiculo.nombre" type="text" name="nombre">
     </mat-form-field>
 
-    <button mat-raised-button (click)="save()" class="custom-mat-button">Registrar</button>
+    <button mat-raised-button (click)="save()" class="custom-mat-button" (click)="openSnackBar()">Registrar</button>
   </form>
 </div>
