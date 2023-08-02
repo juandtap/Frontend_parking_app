@@ -16,7 +16,7 @@ export class DialogAnimationsExampleComponent {
 
 
 
-  constructor(public dialogo: MatDialogRef<DialogAnimationsExampleComponent>, @Inject(MAT_DIALOG_DATA) public mensaje:string) {
+  constructor(public dialogo: MatDialogRef<DialogAnimationsExampleComponent>, @Inject(MAT_DIALOG_DATA) public mensaje:string, @Inject(MAT_DIALOG_DATA) public titulo:string) {
   }
   cerrarDialogo(): void {
     this.dialogo.close(false);

@@ -78,7 +78,9 @@ export class TarifasListComponent  implements OnInit{
   deleteTarifa(tarifa: Tarifa) {
 
     this.dialogo.open(DialogAnimationsExampleComponent, {
-      data: `Seguro que desea eliminar ? Esta accion no puede deshacerse`
+      data: `Seguro que desea eliminar TARIFA ? Esta accion no puede deshacerse`,
+      
+      
     })
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
