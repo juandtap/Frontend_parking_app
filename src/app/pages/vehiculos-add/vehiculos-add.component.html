@@ -30,9 +30,11 @@
     <!-- Campo Cedula -->
     <mat-form-field>
       <mat-label>Cédula</mat-label>
-      <input matInput [(ngModel)]="vehiculo.cedula" type="text" name="cedula" pattern="[0-9]{10}">
+      <input matInput [(ngModel)]="vehiculo.cedula" type="text" name="cedula" (keydown)="onKeyDown2($event)" maxlength="10">
       <mat-error *ngIf="cedulaInvalida">La cédula debe tener 10 dígitos.</mat-error>
     </mat-form-field>
+    
+    
     
 
     <!-- Campo Nombre -->
