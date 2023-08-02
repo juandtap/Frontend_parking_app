@@ -20,7 +20,6 @@ export class VehiculosAddComponent {
   ticket: Ticket = new Ticket
 
   isEditing = false
-  durationInSeconds = 5;
   
   constructor(private vehiculoService : VehiculoService, private ticketService: TicketService, private router: Router , private _snackBar: MatSnackBar){
     let params = this.router.getCurrentNavigation()?.extras.queryParams
@@ -83,8 +82,23 @@ export class VehiculosAddComponent {
 
   openSnackBar() {
     this._snackBar.openFromComponent(SnackbarComponent, {
-      duration: this.durationInSeconds * 1000,
+      duration: 4 * 1000,
+      data : "Vehiculo Registrado Correctamente"
     });
   }
+
+  convertirAMayusculas() {
+    this.vehiculo.marca = this.vehiculo.marca.toUpperCase();
+  }
+
+  cedulaInvalida = false; // Propiedad para controlar si se muestra el mensaje de error
+
+  // Función para validar la cédula y mostrar el mensaje de error si es necesario
+  validarCedula() {
+    const cedulaPattern = /[0-9]{10}/;
+    this.cedulaInvalida = !cedulaPattern.test(this.vehiculo.cedula);
+  }
+
+
 }
 

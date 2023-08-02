@@ -14,7 +14,7 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 export class TarifasAddComponent {
   tarifa: Tarifa = new Tarifa();
   isEditing = false;
-  durationInSeconds = 5;
+
 
   @ViewChild('tarifaForm') tarifaForm!: NgForm;
   @ViewChild('tarifaInput') tarifaInput!: ElementRef;
@@ -64,7 +64,8 @@ export class TarifasAddComponent {
 
   openSnackBar() {
     this._snackBar.openFromComponent(SnackbarComponent, {
-      duration: this.durationInSeconds * 1000,
+      duration: 4 * 1000,
+      data : "Tarifa Agregada Correctamente"
     });
   }
 

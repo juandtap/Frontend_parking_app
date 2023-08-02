@@ -10,6 +10,8 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { DialogAnimationsExampleComponent } from '../dialog-animations-example/dialog-animations-example.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
   selector: 'app-tarifas-list',
@@ -36,7 +38,8 @@ export class TarifasListComponent  implements OnInit{
     private router: Router,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    public dialogo: MatDialog
+    public dialogo: MatDialog,
+    private _snackBar: MatSnackBar
   ) {
 
     this.tarifaService.getAll().subscribe(
@@ -84,6 +87,7 @@ export class TarifasListComponent  implements OnInit{
           this.tarifaService.delete(tarifa).subscribe(
             () => {
               this.ngOnInit()
+              this.openSnackBar()
             }
           )
 
@@ -102,6 +106,13 @@ export class TarifasListComponent  implements OnInit{
         this.tarifaList = data
       }
     )
+  }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: 4 * 1000,
+      data : "Tarifa Eliminada Correctamente"
+    });
   }
 
 }

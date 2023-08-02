@@ -10,7 +10,7 @@
 
     <mat-form-field>
       <mat-label>Marca</mat-label>
-      <input matInput [(ngModel)]="vehiculo.marca" type="text" name="marca">
+      <input matInput [(ngModel)]="vehiculo.marca" (input)="convertirAMayusculas()" type="text" name="marca">
     </mat-form-field>
 
     <!-- Campo Descripcion -->
@@ -30,8 +30,10 @@
     <!-- Campo Cedula -->
     <mat-form-field>
       <mat-label>Cédula</mat-label>
-      <input matInput [(ngModel)]="vehiculo.cedula" type="text" name="cedula">
+      <input matInput [(ngModel)]="vehiculo.cedula" type="text" name="cedula" pattern="[0-9]{10}">
+      <mat-error *ngIf="cedulaInvalida">La cédula debe tener 10 dígitos.</mat-error>
     </mat-form-field>
+    
 
     <!-- Campo Nombre -->
     <mat-form-field>
