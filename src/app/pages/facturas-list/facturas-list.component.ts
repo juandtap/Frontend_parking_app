@@ -11,7 +11,7 @@ import { FacturaService } from 'src/app/services/factura.service';
 })
 export class FacturasListComponent {
   facturaList: any
-  displayedColumns: string[] = ['Id', 'Numero','Fecha', 'Total', 'Ticket', 'Tarifa'];
+  displayedColumns: string[] = ['Numero','Placa', 'Cedula', 'Entrada', 'Salida', 'Tiempo Parqueo','Tarifa' ,'Total'];
 
   
 
@@ -24,7 +24,27 @@ export class FacturasListComponent {
      
   }
 
- 
 
+   // metedod para formatear  las fechas, se llama desde el .html 
+   formatDateTime( fechaHoraString: any): string{
+    const fechaHora = new Date(fechaHoraString);
+  
+    const fechaFormateada = `${fechaHora.getFullYear()}-${String(fechaHora.getMonth() + 1).padStart(2, '0')}-${String(fechaHora.getDate()).padStart(2, '0')}`;
+  
+    const horaFormateada = `${String(fechaHora.getHours()).padStart(2, '0')}:${String(fechaHora.getMinutes()).padStart(2, '0')}:${String(fechaHora.getSeconds()).padStart(2, '0')}`;
+  
+    return `${fechaFormateada} ${horaFormateada}`
+    }
+
+    convertirAMinutosYHoras(minutos: number): string {
+      const horas = Math.floor(minutos / 60);
+      const minutosRestantes = minutos % 60;
+  
+      if (horas > 0) {
+        return `${horas} h ${minutosRestantes} m`;
+      } else {
+        return `${minutos} m`;
+      }
+    }
 
 }

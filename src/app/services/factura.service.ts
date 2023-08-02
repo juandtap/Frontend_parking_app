@@ -20,6 +20,14 @@ export class FacturaService {
     return this.http.post<any>(urlbase+"nuevafactura", JSON.stringify(factura), { headers })
   }
 
+  update(factura : Factura){
+    console.log("Servicio PUT, asignar numero de facura")
+    console.log("factura: "+factura.numero)
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<any>(urlbase+"actualizarfactura", JSON.stringify(factura), { headers })
+
+  }
+
 
   getAll(){
     return this.http.get<Factura[]>(urlbase+"facturas")

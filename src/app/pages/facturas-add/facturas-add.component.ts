@@ -72,25 +72,28 @@ export class FacturasAddComponent {
       // servicio update del ticlet + save de factura
     } else {
       // servicio save de factura
-      console.log("servicio post factura")
-      this.factura.tarifa = this.tarifaSeleccionada
-      this.factura.ticket = this.ticket
-      this.factura.total = this.totalFactura
+      console.log('servicio post factura');
+      this.factura.tarifa = this.tarifaSeleccionada;
+      this.factura.ticket = this.ticket;
+      this.factura.total = this.totalFactura;
 
-      this.facturaService.save(this.factura).subscribe(
-        () =>{
-          console.log("factura guardada")
-          this.openSnackBar("Salida vehiculo registrada!")
-          this.router.navigate(["pages/parqueadero"])
-        }
-      )
+      this.facturaService.save(this.factura).subscribe((facturanueva) => {
+        console.log('factura guardada');
+        // acutalizar la factura para agregar el numero
+        this.facturaService.update(facturanueva).subscribe(() => {
+          console.log('numero de factura agregado');
+        });
+
+        this.openSnackBar('Salida vehiculo registrada!');
+        this.router.navigate(['pages/parqueadero']);
+      });
     }
   }
 
   openSnackBar(mensaje: string) {
     this._snackBar.openFromComponent(SnackbarComponent, {
       duration: 4 * 1000,
-      data : mensaje
+      data: mensaje,
     });
   }
 
