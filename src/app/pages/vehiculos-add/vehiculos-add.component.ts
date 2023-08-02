@@ -5,7 +5,7 @@ import { Ticket } from 'src/app/model/ticket';
 import { Vehiculo } from 'src/app/model/vehiculo';
 import { TicketService } from 'src/app/services/ticket.service';
 import { VehiculoService } from 'src/app/services/vehiculo.service';
-import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 
 @Component({

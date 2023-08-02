@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { NavigationExtras, Router } from '@angular/router';
 import { Ticket } from 'src/app/model/ticket';
-import { Vehiculo } from 'src/app/model/vehiculo';
 import { TicketService } from 'src/app/services/ticket.service';
 
 @Component({
