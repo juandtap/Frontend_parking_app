@@ -41,16 +41,20 @@ h1 {
 }
 
 /* Estilos para cambiar el fondo de los iconos a color negro */
-.example-button-container a.mat-mini-fab {
-  background-color: #000; /* Cambia el fondo de los botones a color negro (#000) */
+.mat-button-disabled mat-icon {
+  background-color: #007bff; /* Cambia el fondo de los botones a color negro (#000) */
 }
 
-.example-button-container a.mat-mini-fab.color-accent {
-  background-color: #000; /* Cambia el fondo del botón de acento a color negro (#000) */
+.mat-button-disabled  {
+  background-color: #007bff; /* Cambia el fondo del botón de acento a color negro (#000) */
 }
 
 .example-button-container a.mat-mini-fab.color-warn {
   background-color: #000; /* Cambia el fondo del botón de advertencia a color negro (#000) */
+}
+
+.botones-navegacion{
+  margin-right: 30px;
 }
 
 /* Resto de estilos sin cambios */
