@@ -38,4 +38,15 @@ export class ParqueaderoComponent {
     )
     
   }
+
+  // metedod para formatear  las fechas, se llama desde el .html 
+  formatDateTime( fechaHoraString: any): string{
+  const fechaHora = new Date(fechaHoraString);
+
+  const fechaFormateada = `${fechaHora.getFullYear()}-${String(fechaHora.getMonth() + 1).padStart(2, '0')}-${String(fechaHora.getDate()).padStart(2, '0')}`;
+
+  const horaFormateada = `${String(fechaHora.getHours()).padStart(2, '0')}:${String(fechaHora.getMinutes()).padStart(2, '0')}:${String(fechaHora.getSeconds()).padStart(2, '0')}`;
+
+  return `${fechaFormateada} ${horaFormateada}`
+  }
 }

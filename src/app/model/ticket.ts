@@ -2,8 +2,8 @@ import { Vehiculo } from "./vehiculo"
 
 export class Ticket {
     id?: number
-    horaEntrada: any
-    horaSalida: any
+    horaEntrada?: Date
+    horaSalida?: Date
     tiempoParqueo: number =0
     estadoSalida: boolean = false
 
