@@ -87,4 +87,36 @@ export class FacturasAddComponent {
       event.preventDefault();
     }
   }
+  // el servidor devuelve el tiempo de parqueo en minutos, esta funcion devuelve un string
+  // que muestra ese tiempo en en hora y minutos 
+  convertirAMinutosYHoras(minutos: number): string {
+    const horas = Math.floor(minutos / 60);
+    const minutosRestantes = minutos % 60;
+
+    if (horas > 0) {
+      return `${horas} hora${horas > 1 ? 's' : ''} con ${minutosRestantes} minuto${minutosRestantes > 1 ? 's' : ''}`;
+    } else {
+      return `${minutos} minuto${minutos > 1 ? 's' : ''}`;
+    }
+  }
+
+  calcularPrecioParqueo(tiempoenminutos: number, precioHora: number, fraccionHora: number): number {
+    const horasCompletas = Math.floor(tiempoenminutos / 60);
+    const minutosRestantes = tiempoenminutos % 60;
+
+    let precioTotal = 0;
+    
+    // Cálculo de las horas completas
+    if (horasCompletas > 0) {
+      precioTotal += horasCompletas * precioHora;
+    }
+
+    // Cálculo de los minutos restantes
+    if (minutosRestantes > 0) {
+      precioTotal += precioHora * (minutosRestantes <= fraccionHora ? 1 : Math.ceil(minutosRestantes / fraccionHora));
+    }
+
+    return precioTotal;
+  }
+  
 }
