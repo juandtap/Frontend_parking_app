@@ -1,10 +1,34 @@
-
 <body>
-    <header>
-        <div class="header-content">
-            <h1>Parking Control</h1>
-            <!-- <img src="https://th.bing.com/th/id/OIG.BQf9sPZtIjWfp5c_by8O?pid=ImgGn" alt="Logo" class="logo"> -->
+  <header>
+    <div class="header-content">
+      <img src="assets/Logo.jpeg" alt="Logo" class="logo">
+      <h1>Parking Control</h1>
+    </div>
+    <section>
+      <div class="example-label"></div>
+      <div class="example-button-row">
+        <div class="example-button-container">
+          <a mat-mini-fab class="mat-button-disabled" aria-label="Example icon button with a home icon" routerLink="pages/inicio">
+            <mat-icon>home</mat-icon>
+          </a>
+        </div>  
+        <div class="example-flex-container">
+          
+          
+          <div class="example-button-container">
+            <a mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" routerLink="pages/parqueadero">
+              <mat-icon>plus_one</mat-icon>
+            </a>
+          </div>
+          <div class="example-button-container">
+            <a mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" routerLink="pages/tarifas-list">
+              <mat-icon>filter_list</mat-icon>
+            </a>
+          </div>
+        
         </div>
-    </header>
+      </div>
+    </section>
+  </header>
 </body>
 

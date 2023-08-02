@@ -1,36 +1,78 @@
+/* Estilos del dashboard */
 body {
-    margin: 0;
-    padding: 0;
-   
-    color: white;
-    /* font-family: "Helvetica Neue", Arial, sans-serif; */
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: white;
+  background-color: black; /* Fondo negro para el cuerpo */
 }
 
 header {
-    top: 0;
-    left: 0;
-    position: fixed;
-    padding: 20px;
-    background-color: #dc2626;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    z-index: 999;
+  top: 0;
+  left: 0;
+  position: fixed;
+  padding: 20px;
+  background-color: #fbbf24; /* Amarillo */
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Coloca el logo y el texto en la esquina superior izquierda */
 }
 
 h1 {
-    font-size: 24px;
-    margin-right: 10px;
-   
+  font-size: 24px;
+  margin-left: 10px; /* Espacio entre el logo y el título */
 }
 
 .logo {
-    width: 40px; /* Ajusta el tamaño según tus necesidades */
-    height: 40px; /* Ajusta el tamaño según tus necesidades */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Da un estilo redondeado al logo */
+  border: 2px solid black; /* Agrega un borde negro al logo */
 }
+
+/* Estilos para cambiar el fondo de los iconos a color negro */
+.example-button-container a.mat-mini-fab {
+  background-color: #000; /* Cambia el fondo de los botones a color negro (#000) */
+}
+
+.example-button-container a.mat-mini-fab.color-accent {
+  background-color: #000; /* Cambia el fondo del botón de acento a color negro (#000) */
+}
+
+.example-button-container a.mat-mini-fab.color-warn {
+  background-color: #000; /* Cambia el fondo del botón de advertencia a color negro (#000) */
+}
+
+/* Resto de estilos sin cambios */
+.example-button-row {
+  display: flex;
+  align-items: center;
+}
+
+.example-flex-container {
+  display: flex;
+}
+
+.example-button-container {
+  margin-right: 10px;
+}
+
+.example-label {
+  margin-right: 10px;
+}
+
+
+
+
+
+
