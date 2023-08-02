@@ -6,7 +6,9 @@ import { Factura } from 'src/app/model/factura';
 import { Tarifa } from 'src/app/model/tarifa';
 import { Vehiculo } from 'src/app/model/vehiculo';
 import { VehiculoService } from 'src/app/services/vehiculo.service';
-
+import { Ticket } from 'src/app/model/ticket';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
 @Component({
   selector: 'app-facturas-add',
   templateUrl: './facturas-add.component.html',
@@ -15,17 +17,14 @@ import { VehiculoService } from 'src/app/services/vehiculo.service';
 export class FacturasAddComponent {
  
   factura : Factura = new Factura()
-  vehiculo: Vehiculo = new Vehiculo()
-  isEditing = true
+  ticket: Ticket = new Ticket()
   tarifaList: Tarifa[] = []
  
-  displayedColumns: string[] = ['id', 'Tarifa', 'Precio/Hora'];
 
   tarifaSeleccionada : Tarifa = new Tarifa()
   @ViewChild('vehiculoForm') vehiculoForm!: NgForm;
 
   constructor(
-    private vehiculoService: VehiculoService,
     private router: Router,
     private tarifaService: TarifaService
   ) {
@@ -43,16 +42,12 @@ export class FacturasAddComponent {
     let params = this.router.getCurrentNavigation()?.extras.queryParams;
     if (params) {
       console.log('parametros recibidos: ' + params);
-      console.log(this.vehiculo);
-      this.vehiculo = params['vehiculoToEdit'];
-      //this.isEditing = params['flag'];
+     
+      this.ticket = params['ticketToEdit'];
+      
     }
 
-    if (this.isEditing) {
-      console.log('modo edit');
-    } else {
-      console.log('modo save');
-    }
+  
   }
 
   checkDataForm() {
@@ -64,20 +59,7 @@ export class FacturasAddComponent {
   }
 
   save() {
-    if (!this.isEditing) {
-      this.vehiculoService.save(this.vehiculo).subscribe((data) => {
-        console.log('resultado POST: ', data);
-
-        this.router.navigate(['pages/tarifas-list']);
-      });
-      this.vehiculo = new Vehiculo();
-    } else {
-      console.log('actualizar tarifa ' + this.vehiculo);
-      this.vehiculoService.update(this.vehiculo).subscribe((data) => {
-        console.log('resultado PUT: ', data);
-        this.router.navigate(['pages/tarifas-list']);
-      });
-    }
+  
   }
 
   formatPlaca() {
@@ -86,8 +68,8 @@ export class FacturasAddComponent {
 
     // Verificar si el valor actual cumple con el formato deseado
     if (
-      this.vehiculo.placa &&
-      placaRegex.test(this.vehiculo.placa.toUpperCase())
+      this.ticket.vehiculo.placa &&
+      placaRegex.test(this.ticket.vehiculo.placa.toUpperCase())
     ) {
       // Si el valor cumple con el formato, lo dejamos como está
       return;
@@ -97,7 +79,7 @@ export class FacturasAddComponent {
   onKeyDown(event: KeyboardEvent) {
     // Limitar el numero de caracteres a 8 (3 letras + 1 guion + 4 dígitos)
     if (
-      this.vehiculo.placa.length >= 8 &&
+      this.ticket.vehiculo.placa.length >= 8 &&
       event.key !== 'Backspace' &&
       event.key !== 'Tab'
     ) {

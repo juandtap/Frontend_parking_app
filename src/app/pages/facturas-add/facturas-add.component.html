@@ -9,27 +9,34 @@
         <h3>Datos del Vehículo</h3>
         <mat-form-field>
           <mat-label>Placa</mat-label>
-          <input matInput [(ngModel)]="vehiculo.placa" type="text" name="placa" (input)="formatPlaca()" (keydown)="onKeyDown($event)" required>
+          <input matInput [(ngModel)]="ticket.vehiculo.placa" type="text" name="placa" (input)="formatPlaca()" (keydown)="onKeyDown($event)" required>
         </mat-form-field>
   
         <mat-form-field>
           <mat-label>Marca</mat-label>
-          <input matInput [(ngModel)]="vehiculo.marca" type="text" name="marca">
+          <input matInput [(ngModel)]="ticket.vehiculo.marca" type="text" name="marca">
         </mat-form-field>
-  
+        
+        <h3>Datos del Cliente</h3>
+        <p>Si los datos se dejan en blanco, en la factura aparecera como consumidor final </p>
+
         <mat-form-field>
           <mat-label>Cédula</mat-label>
-          <input matInput [(ngModel)]="vehiculo.cedula" type="text" name="cedula">
+          <input matInput [(ngModel)]="ticket.vehiculo.cedula" type="text" name="cedula">
         </mat-form-field>
   
         <mat-form-field>
           <mat-label>Nombre</mat-label>
-          <input matInput [(ngModel)]="vehiculo.nombre" type="text" name="nombre">
+          <input matInput [(ngModel)]="ticket.vehiculo.nombre" type="text" name="nombre">
         </mat-form-field>
+
+        <button mat-raised-button type="submit" class="custom-mat-button">Guardar</button>
       </form>
     </mat-card>
-
     
+      <br/>
+   
+     
   </div>
 
   <!-- Columna derecha con la Lista de tarifas -->
@@ -38,8 +45,8 @@
 
     <mat-card>
       <h2>Seleccionar Tarifa</h2>
-      <mat-form-field>
-        <mat-select [(ngModel)]="tarifaSeleccionada" *ngIf="tarifaList.length > 0" name="tarifa" required>
+      <mat-form-field *ngIf="tarifaList.length > 0">
+        <mat-select [(ngModel)]="tarifaSeleccionada"  name="tarifa" required>
           <mat-option *ngFor="let option of tarifaList" [value]="option">
               {{option.tarifa}} - $ {{option.precioHora}} /hora
           </mat-option>
@@ -50,6 +57,11 @@
         <p> {{tarifaSeleccionada.tarifa}}  </p>
         <p> precio: $ {{tarifaSeleccionada.precioHora}}/hora</p>
         <p> fraccion hora: {{tarifaSeleccionada.fraccionHora}} min</p>
+    </mat-card>
+    <br/>
+    <mat-card>
+        <h2>Tiempo parqueo</h2>
+        {{ticket.tiempoParqueo}}
     </mat-card>
 
   

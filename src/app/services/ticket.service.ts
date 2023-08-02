@@ -25,4 +25,13 @@ export class TicketService {
   getAll(){
     return this.http.get<Ticket[]>(urlbase+"tickets")
   }
+
+  updateEndTime(ticket: Ticket){
+    console.log("Servicio PUT")
+    console.log("Se marca hora de salida en el ticket : "+ticket.id)
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+
+    return this.http.put<any>(urlbase+"actualizarticket", JSON.stringify(ticket), {headers})
+  }
 }

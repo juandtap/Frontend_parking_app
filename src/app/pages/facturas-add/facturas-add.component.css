@@ -29,11 +29,9 @@
  
 }
 
-/* Estilos para el formulario de Datos del Vehículo */
-.vehiculo-form {
-  /* Ajusta los márgenes del formulario */
-  margin-top: 20px;
-  margin-bottom: 20px; 
+.column-left button{
+  background-color: #007bff;
+ color: white;
 }
 
 /* Estilos para la columna derecha */
@@ -47,12 +45,6 @@
   padding: 5px;
 }
 
-/* Estilos para la tabla de Lista de tarifas */
-.mat-elevation-z8 {
-  /* Ajusta los márgenes de la tabla */
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
 /* Estilos adicionales para el botón Agregar nueva tarifa */
 .custom-button {
@@ -63,10 +55,7 @@
   background-color: rgba(0, 0, 0, 0.1); /* Cambia el color de fondo de las filas seleccionadas */
 }
 .column-right {
-  width: 200px; /* Ancho del div */
-  height: 300px; /* Alto del div */
-  padding: 10px; /* Espacio interno del div */
-  margin: 5px; /* Espacio externo del div */
+ 
   font-size: 14px; /* Tamaño de la fuente dentro del div */
 }
 
@@ -75,20 +64,4 @@ h2 {
   margin-bottom: 10px; /* Ajusta el margen inferior del título */
 }
 
-.mat-elevation-z8 {
-  max-height: 300px; /* Ajusta la altura máxima de la tabla */
-  overflow-y: auto; /* Añade scroll vertical si el contenido excede la altura máxima */
-}
 
-table {
-  width: 100%; /* Ajusta el ancho de la tabla para que ocupe todo el espacio disponible */
-}
-
-td, th {
-  padding: 8px; /* Ajusta el padding de las celdas */
-  font-size: 14px; /* Cambia el tamaño de la fuente de las celdas */
-}
-
-.mat-row:hover {
-  background-color: #f0f0f0; /* Cambia el color de fondo de la fila al pasar el cursor sobre ella */
-}

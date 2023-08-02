@@ -36,7 +36,7 @@
           <!-- Verificar si ticket.horaSalida es null o vacío -->
           <ng-container *ngIf="!ticket.horaSalida; else mostrarHoraSalida">
             <!-- Botón "Marcar Salida" con el evento click que llama a la función editVehiculo(vehiculo) -->
-            <button mat-button (click)="goToFacture(ticket.vehiculo)">Marcar Salida</button>
+            <button mat-button (click)="goToFacture(ticket)">Marcar Salida</button>
           </ng-container>
           <ng-template #mostrarHoraSalida>{{ ticket.horaSalida }}</ng-template>
         </td>
