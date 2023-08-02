@@ -24,14 +24,14 @@ import { ParqueaderoComponent } from './pages/parqueadero/parqueadero.component'
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip'; // Importante: Asegúrate de tener esta importación
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogAnimationsExampleComponent } from './pages/dialog-animations-example/dialog-animations-example.component';
+import { DialogAnimationsExampleComponent } from './components/dialog-animations-example/dialog-animations-example.component';
 import { AcercadeComponent } from './pages/acercade/acercade.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component'; // Importante: Asegúrate de tener esta importación
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { FacturasAddComponent } from './pages/facturas-add/facturas-add.component';
 import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
-import { SnackbarComponent } from './pages/snackbar/snackbar.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { InicioComponent } from './pages/inicio/inicio.component';
 

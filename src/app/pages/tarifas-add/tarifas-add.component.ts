@@ -4,7 +4,7 @@ import { Tarifa } from 'src/app/model/tarifa';
 import { TarifaService } from 'src/app/services/tarifa.service';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-tarifas-add',

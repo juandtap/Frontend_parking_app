@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Tarifa } from 'src/app/model/tarifa';
 import { TarifaService } from 'src/app/services/tarifa.service';
-import { TarifasListComponent } from '../tarifas-list/tarifas-list.component';
+import { TarifasListComponent } from '../../pages/tarifas-list/tarifas-list.component';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
