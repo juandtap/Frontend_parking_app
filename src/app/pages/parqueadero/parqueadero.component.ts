@@ -24,15 +24,15 @@ export class ParqueaderoComponent {
   }
 
   goToFacture(ticket: Ticket) {
-    let params: NavigationExtras = {
-      queryParams: {
-        ticketToEdit: ticket,
-      },
-    };
-
     // actualiza el ticket con la hora de salida y el tiempo total
     this.ticketService.updateEndTime(ticket).subscribe(
-      () =>{
+      (data) =>{
+        ticket = data
+        let params: NavigationExtras = {
+          queryParams: {
+            ticketToEdit: ticket,
+          },
+        };
         console.log("ticket actualizado")
         this.router.navigate(['pages/facturas-add'], params)
       }

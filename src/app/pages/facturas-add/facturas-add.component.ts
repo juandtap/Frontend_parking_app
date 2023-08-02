@@ -45,6 +45,7 @@ export class FacturasAddComponent {
      
       this.ticket = params['ticketToEdit'];
       
+      console.log("tiempo de parqueo del ticket "+this.ticket.id+" : "+this.ticket.tiempoParqueo)
     }
 
   
