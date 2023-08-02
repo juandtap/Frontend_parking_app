@@ -49,6 +49,10 @@ h1 {
   background-color: #007bff; /* Cambia el fondo del botón de acento a color negro (#000) */
 }
 
+
+
+
+
 .example-button-container a.mat-mini-fab.color-warn {
   background-color: #000; /* Cambia el fondo del botón de advertencia a color negro (#000) */
 }

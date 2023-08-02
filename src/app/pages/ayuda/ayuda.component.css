@@ -1,0 +1,94 @@
+/* Estilos para el contenedor de los mat-card */
+.mat-card {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para el título dentro del mat-card */
+  mat-card-title {
+    color: red;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el contenido dentro del mat-card */
+  mat-card-content {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilos para las imágenes dentro del mat-card */
+  img {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+  
+  /* Estilos para las listas ordenadas dentro del mat-card */
+  ol {
+    margin-left: 30px;
+  }
+  
+  /* Estilos para los elementos de lista dentro del mat-card */
+  li {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos específicos para cada mat-card */
+  .manual-usuario {
+    background-color: #f9f9f9;
+  }
+  
+  .marcar-salida {
+    background-color: #f0f0f0;
+  }
+  
+  .consultar-tarifa {
+    background-color: #f0f0f0;
+  }
+
+  /* Estilos generales para el título h1 */
+h1 {
+    font-size: 36px;
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+  
+  /* Estilos adicionales para resaltar el título */
+  h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+  }
+  
+  /* Estilos para animar el título al pasar el cursor sobre él */
+  h1:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Estilos para agregar un fondo degradado al título */
+  h1 {
+    background-image: linear-gradient(to right, #007bff, #00bfff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  /* Estilos para agregar un borde redondeado al título */
+  h1 {
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  /* Estilos para agregar sombra al título */
+  h1 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
