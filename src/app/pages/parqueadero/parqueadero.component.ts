@@ -13,7 +13,7 @@ import { TicketService } from 'src/app/services/ticket.service';
 export class ParqueaderoComponent {
   ticketList: any;
 
-  displayedColumns: string[] = ['Placa', 'Marca', 'Entrada', 'Salida'];
+  displayedColumns: string[] = ['Placa', 'Marca', 'Color', 'Descripción', 'Entrada', 'Salida'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
