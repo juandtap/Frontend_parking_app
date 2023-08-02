@@ -7,7 +7,7 @@
 }
 
  .header-component{
-   
+    
     height: 100%;
 } 
 
@@ -20,8 +20,9 @@
 }
 
 .pages-component{
+   
+    margin-top: 90px;
     margin-left: 15%;
     padding: 15px;
-   
     
 }
