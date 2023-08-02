@@ -9,6 +9,7 @@ import { AcercadeComponent } from './pages/acercade/acercade.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component';
 import { FacturasAddComponent } from './pages/facturas-add/facturas-add.component';
 import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: "pages/parqueadero", component: ParqueaderoComponent},
   {path: "pages/facturas-add", component: FacturasAddComponent},
   {path: "pages/facturas-list", component:FacturasListComponent},
+  {path: "pages/inicio", component:InicioComponent},
 ];
 
 @NgModule({

@@ -33,6 +33,7 @@ import { FacturasAddComponent } from './pages/facturas-add/facturas-add.componen
 import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { MatSnackBarModule} from '@angular/material/snack-bar';
     FacturasAddComponent,
     FacturasListComponent,
     SnackbarComponent,
+    InicioComponent,
   ],
   imports: [
     BrowserModule,

@@ -98,6 +98,22 @@ export class VehiculosAddComponent {
     const cedulaPattern = /[0-9]{10}/;
     this.cedulaInvalida = !cedulaPattern.test(this.vehiculo.cedula);
   }
+  onKeyDown2(event: KeyboardEvent) {
+    // Permitir solo teclas numéricas y algunas teclas especiales como Delete, Backspace, etc.
+    if (
+      (event.key === 'ArrowLeft' || event.key === 'ArrowRight' || event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Tab') ||
+      // Permitir números del teclado numérico
+      (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9')
+    ) {
+      // Permitir la tecla
+      return true;
+    } else {
+      // Prevenir todas las demás teclas
+      event.preventDefault();
+      return false;
+    }
+  }
+  
 
 
 }
