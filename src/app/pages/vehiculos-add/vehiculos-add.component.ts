@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Ticket } from 'src/app/model/ticket';
@@ -6,6 +6,7 @@ import { Vehiculo } from 'src/app/model/vehiculo';
 import { TicketService } from 'src/app/services/ticket.service';
 import { VehiculoService } from 'src/app/services/vehiculo.service';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class VehiculosAddComponent {
   ticket: Ticket = new Ticket
 
   isEditing = false
+  @ViewChild('vehiculoForm') vehiculoForm!: NgForm
   
   constructor(private vehiculoService : VehiculoService, private ticketService: TicketService, private router: Router , private _snackBar: MatSnackBar){
     let params = this.router.getCurrentNavigation()?.extras.queryParams
@@ -66,6 +68,15 @@ export class VehiculosAddComponent {
       event.preventDefault();
     }
     
+  }
+
+  checkDataForm() {
+    if (this.vehiculoForm.valid) {
+      this.save();
+      this.openSnackBar()
+    } else {
+      alert('Complete todos los campos requeridos.');
+    }
   }
 
   save(){

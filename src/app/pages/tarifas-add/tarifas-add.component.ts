@@ -37,6 +37,7 @@ export class TarifasAddComponent {
   checkDataForm() {
     if (this.tarifaForm.valid) {
       this.save();
+      this.openSnackBar()
     } else {
       alert('Complete todos los campos requeridos.');
     }
