@@ -60,10 +60,14 @@
     </mat-card>
     <br/>
     <mat-card>
-        <h2>Tiempo parqueo</h2>
-        {{ticket.tiempoParqueo}} minutos
+      <h2>Tiempo parqueo</h2>
+      {{ convertirAMinutosYHoras(ticket.tiempoParqueo) }}
     </mat-card>
-
+    
+    <mat-card>
+      <h2>Total a pagar</h2>
+      
+    </mat-card>
   
   
    

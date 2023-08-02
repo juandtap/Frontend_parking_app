@@ -4,7 +4,7 @@ export class Ticket {
     id?: number
     horaEntrada: any
     horaSalida: any
-    tiempoParqueo?: number
+    tiempoParqueo: number =0
     estadoSalida: boolean = false
 
     vehiculo!: Vehiculo
