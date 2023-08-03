@@ -42,7 +42,7 @@ export class ParqueaderoComponent {
 
     this.dialogo
       .open(DialogAnimationsExampleComponent, {
-        data: `Seguro desea Marcar la Salida del Vehiculo ? \nEsta accion no puede deshacerse`,
+        data: `Seguro desea Marcar la Salida del Vehiculo ? Esta accion no puede deshacerse`,
       })
       .afterClosed()
       .subscribe((confirmado: Boolean) => {

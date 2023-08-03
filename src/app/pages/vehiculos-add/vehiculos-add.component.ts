@@ -21,6 +21,8 @@ export class VehiculosAddComponent {
   ticket: Ticket = new Ticket
   // variable para recuperar el vehiculo de la base de datos si existe
   vehiculoRecuperado : Vehiculo = new Vehiculo
+  flagRecuperado = false
+
 
   isEditing = false
   @ViewChild('vehiculoForm') vehiculoForm!: NgForm
@@ -83,14 +85,43 @@ export class VehiculosAddComponent {
 
   save(){
     
-    console.log("agregar nuevo vehiculo "+this.vehiculo.placa)
-    this.ticket.vehiculo = this.vehiculo
-    this.ticketService.save(this.ticket).subscribe(data =>{
-    console.log("resultado POST: ",data)
-    this.router.navigate(["pages/parqueadero"])
-    this.openSnackBar()
-    })
-    this.vehiculo = new Vehiculo
+    if(this.flagRecuperado){
+        console.log("Se ha recuperado vehiculo de la base de datos")
+        this.ticket.vehiculo = this.vehiculoRecuperado
+        console.log("VEHICULO EN TICKET")
+        console.log(this.ticket.vehiculo.placa)
+        this.ticketService.save(this.ticket).subscribe(
+          ()=>{
+            console.log("resultado POST: ")
+            console.log("ticket agregado correctamente")
+            this.router.navigate(["pages/parqueadero"])
+          }
+        )
+
+
+    } else{
+      console.log("agregar nuevo vehiculo "+this.vehiculo.placa)
+      console.log("Servicio POST vehiculo")
+      this.vehiculoService.save(this.vehiculo).subscribe(
+        (data) => {
+          console.log("vehiculo agregado correctamemte")
+  
+          // agrego vehiculo al ticket y guardo el ticket en la base
+            this.ticket.vehiculo = data
+            this.ticketService.save(this.ticket).subscribe(data =>{
+              console.log("resultado POST: ",data)
+              console.log("ticket agregado correctamente")
+              
+              this.router.navigate(["pages/parqueadero"])
+              
+            })
+        }
+      )
+  
+      this.vehiculo = new Vehiculo
+    }
+
+    
   }
 
   // este metodo se usa para cargar un vehiculo que ya esta agregado a la base de datos
@@ -109,7 +140,7 @@ export class VehiculosAddComponent {
               console.log(this.vehiculoRecuperado.marca)
 
               this.vehiculo = this.vehiculoRecuperado
-
+              this.flagRecuperado = true
           }else{
             console.log("Placa nueva")
           }

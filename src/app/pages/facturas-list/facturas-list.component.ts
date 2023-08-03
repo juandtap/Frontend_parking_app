@@ -11,7 +11,7 @@ import { FacturaService } from 'src/app/services/factura.service';
 })
 export class FacturasListComponent {
   facturaList: any
-  displayedColumns: string[] = ['Numero','Placa', 'Cedula', 'Entrada', 'Salida', 'Tiempo Parqueo','Tarifa' ,'Total'];
+  displayedColumns: string[] = ['Numero','Placa', 'Cedula', 'Nombre','Entrada', 'Salida', 'Tiempo Parqueo','Tarifa' ,'Total'];
 
   
 
@@ -41,9 +41,9 @@ export class FacturasListComponent {
       const minutosRestantes = minutos % 60;
   
       if (horas > 0) {
-        return `${horas} h ${minutosRestantes} m`;
+        return `${horas} h ${minutosRestantes} min`;
       } else {
-        return `${minutos} m`;
+        return `${minutos} min`;
       }
     }
 

@@ -22,7 +22,7 @@ export class FacturasAddComponent {
   factura: Factura = new Factura();
   ticket: Ticket = new Ticket();
   tarifaList: Tarifa[] = [];
-
+  vehiculo : Vehiculo = new Vehiculo()
   totalFactura: number = 0;
 
   actualizacionVehiculo = false;
@@ -35,6 +35,7 @@ export class FacturasAddComponent {
     private tarifaService: TarifaService,
     private ticketService: TicketService,
     private facturaService: FacturaService,
+    private vehiculoService: VehiculoService,
     private _snackBar: MatSnackBar
   ) {
     this.tarifaService.getAll().subscribe((data: Tarifa[]) => {
@@ -67,19 +68,35 @@ export class FacturasAddComponent {
   }
 
   save() {
+    console.log("Se agregan datos del cliente")
     // guardar factura con su ticket y tarifa seleccionada
     if (this.ticket.vehiculo.cedula !== "" && this.ticket.vehiculo.nombre !== "") {
-      // servicio update del ticlet + save de factura
-      // se agregan los datos del cliente al vehiculo
-      console.log("Se agregan datos del cliente")
-      console.log("Servicio PUT ticket")
-      this.ticketService.updateClientData(this.ticket).subscribe(
-        ()=>{
-          console.log("Se ha actualizado el vehiculo del ticket")
-          this.saveFactura()
+      // servicio update del vehiculo + ticket + save de factura
+      
+      //  recupero el vehiculo
+      this.vehiculoService.findVehiculoById(this.ticket.vehiculo.placa).subscribe(
+        (data) =>{
+          this.vehiculo = data
+          this.vehiculo.cedula = this.ticket.vehiculo.cedula
+          this.vehiculo.nombre = this.ticket.vehiculo.nombre
+           // actualizo el vehiculo con los datos del cliente
+          this.vehiculoService.update(this.vehiculo).subscribe(
+            (data)=>{
+              this.ticket.vehiculo = data;
+              // actualizo  los datos del vehiculo en el ticket
+              
+              console.log('Servicio PUT ticket')
+              this.ticketService.updateClientData(this.ticket).subscribe(() => {
+                console.log('Se ha actualizado el vehiculo del ticket')
+                this.saveFactura();
+              })
 
+            }
+          )
         }
       )
+
+      
     } else {
       // servicio save de factura
       console.log("No se agregan datos del cliente")
