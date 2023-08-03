@@ -1,5 +1,5 @@
 <div>
-  <form action="" class="vehiculo-form">
+  <form action="" class="vehiculo-form" #vehiculoForm="ngForm" (ngSubmit)="checkDataForm()">
     <!-- Columna Placa -->
     <!-- Campo Marca -->
     <h2>Registrar vehiculo</h2>
@@ -43,6 +43,6 @@
       <input matInput [(ngModel)]="vehiculo.nombre" type="text" name="nombre">
     </mat-form-field>
 
-    <button mat-raised-button (click)="save()" class="custom-mat-button" (click)="openSnackBar()">Registrar</button>
+    <button mat-raised-button  class="custom-mat-button" (click)="openSnackBar()">Registrar</button>
   </form>
 </div>
