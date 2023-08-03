@@ -19,6 +19,8 @@ export class VehiculosAddComponent {
 
   vehiculo: Vehiculo = new Vehiculo
   ticket: Ticket = new Ticket
+  // variable para recuperar el vehiculo de la base de datos si existe
+  vehiculoRecuperado : Vehiculo = new Vehiculo
 
   isEditing = false
   @ViewChild('vehiculoForm') vehiculoForm!: NgForm
@@ -86,10 +88,38 @@ export class VehiculosAddComponent {
     this.ticketService.save(this.ticket).subscribe(data =>{
     console.log("resultado POST: ",data)
     this.router.navigate(["pages/parqueadero"])
+    this.openSnackBar()
     })
     this.vehiculo = new Vehiculo
   }
 
+  // este metodo se usa para cargar un vehiculo que ya esta agregado a la base de datos
+  // se ejecuta al terminar de escribir la placa
+  onInputChange(){
+    if (this.vehiculo.placa.length === 8) {
+      // El usuario ha escrito 8 caracteres en el campo de placa.
+      // se procede a buscar la placa
+      this.vehiculoService.findVehiculoById(this.vehiculo.placa).subscribe(
+        (data: Vehiculo) =>{
+          this.vehiculoRecuperado = data
+          
+          if(this.vehiculoRecuperado){
+              console.log("vehiculo recuperado de la base de datos")
+              console.log(this.vehiculoRecuperado.placa)
+              console.log(this.vehiculoRecuperado.marca)
+
+              this.vehiculo = this.vehiculoRecuperado
+
+          }else{
+            console.log("Placa nueva")
+          }
+
+        }
+      )
+     
+    } 
+    
+  }
 
   openSnackBar() {
     this._snackBar.openFromComponent(SnackbarComponent, {

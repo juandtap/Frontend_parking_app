@@ -5,7 +5,7 @@
     <h2>Registrar Entrada del vehiculo</h2>
     <mat-form-field>
       <mat-label>Placa</mat-label>
-      <input matInput [(ngModel)]="vehiculo.placa" type="text" name="placa" (input)="formatPlaca()" (keydown)="onKeyDown($event)" required>
+      <input matInput [(ngModel)]="vehiculo.placa" type="text" name="placa" (input)="formatPlaca()" (keydown)="onKeyDown($event)"  (input)="onInputChange()"  required>
     </mat-form-field>
 
     <mat-form-field>
@@ -43,6 +43,6 @@
       <input matInput [(ngModel)]="vehiculo.nombre" type="text" name="nombre">
     </mat-form-field>
 
-    <button mat-raised-button  class="custom-mat-button" (click)="openSnackBar()">Registrar</button>
+    <button mat-raised-button  class="custom-mat-button">Registrar</button>
   </form>
 </div>
