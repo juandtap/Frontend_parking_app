@@ -33,7 +33,7 @@ export class FacturasListComponent {
   
     const horaFormateada = `${String(fechaHora.getHours()).padStart(2, '0')}:${String(fechaHora.getMinutes()).padStart(2, '0')}:${String(fechaHora.getSeconds()).padStart(2, '0')}`;
   
-    return `${fechaFormateada} ${horaFormateada}`
+    return `${fechaFormateada} - ${horaFormateada}`
     }
 
     convertirAMinutosYHoras(minutos: number): string {

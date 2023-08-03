@@ -68,26 +68,42 @@ export class FacturasAddComponent {
 
   save() {
     // guardar factura con su ticket y tarifa seleccionada
-    if (this.actualizacionVehiculo) {
+    if (this.ticket.vehiculo.cedula !== "" && this.ticket.vehiculo.nombre !== "") {
       // servicio update del ticlet + save de factura
+      // se agregan los datos del cliente al vehiculo
+      console.log("Se agregan datos del cliente")
+      console.log("Servicio PUT ticket")
+      this.ticketService.updateClientData(this.ticket).subscribe(
+        ()=>{
+          console.log("Se ha actualizado el vehiculo del ticket")
+          this.saveFactura()
+
+        }
+      )
     } else {
       // servicio save de factura
-      console.log('servicio post factura');
-      this.factura.tarifa = this.tarifaSeleccionada;
-      this.factura.ticket = this.ticket;
-      this.factura.total = this.totalFactura;
-
-      this.facturaService.save(this.factura).subscribe((facturanueva) => {
-        console.log('factura guardada');
-        // acutalizar la factura para agregar el numero
-        this.facturaService.update(facturanueva).subscribe(() => {
-          console.log('numero de factura agregado');
-        });
-
-        this.openSnackBar('Salida vehiculo registrada!');
-        this.router.navigate(['pages/parqueadero']);
-      });
+      console.log("No se agregan datos del cliente")
+      this.saveFactura()
     }
+  }
+
+  saveFactura(){
+
+    console.log('servicio post factura');
+    this.factura.tarifa = this.tarifaSeleccionada;
+    this.factura.ticket = this.ticket;
+    this.factura.total = this.totalFactura;
+
+    this.facturaService.save(this.factura).subscribe((facturanueva) => {
+      console.log('factura guardada');
+      // acutalizar la factura para agregar el numero
+      this.facturaService.update(facturanueva).subscribe(() => {
+        console.log('numero de factura agregado');
+      });
+
+      this.openSnackBar('Salida vehiculo registrada!');
+      this.router.navigate(['pages/parqueadero']);
+    });
   }
 
   openSnackBar(mensaje: string) {
@@ -165,5 +181,21 @@ export class FacturasAddComponent {
     }
     this.totalFactura = parseFloat(precioTotal.toFixed(2));
     return parseFloat(precioTotal.toFixed(2));
+  }
+
+  onKeyDown2(event: KeyboardEvent) {
+    // Permitir solo teclas numéricas y algunas teclas especiales como Delete, Backspace, etc.
+    if (
+      (event.key === 'ArrowLeft' || event.key === 'ArrowRight' || event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Tab') ||
+      // Permitir números del teclado numérico
+      (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9')
+    ) {
+      // Permitir la tecla
+      return true;
+    } else {
+      // Prevenir todas las demás teclas
+      event.preventDefault();
+      return false;
+    }
   }
 }

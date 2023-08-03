@@ -80,7 +80,7 @@ export class ParqueaderoComponent {
       fechaHora.getSeconds()
     ).padStart(2, '0')}`;
 
-    return `${fechaFormateada} ${horaFormateada}`;
+    return `${fechaFormateada} - ${horaFormateada}`;
   }
 
   openSnackBar() {
